@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of notes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<form action="/notes/add" method="post">
+    <label>Name: <input type="text" name="title" required></label>
+    <label>Note: <input type="text" name="content" required></label>
+    <button type="submit">Add</button>
+</form>
+
+<h2>List of notes</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:if="${notes.isEmpty()}">
+        <td colspan="5" style="text-align: center; color: gray;">No notes</td>
+    </tr>
+
+    <tr th:each="note : ${notes}">
+        <td th:text="${note.id}"></td>
+        <td th:text="${note.title}"></td>
+        <td th:text="${#dates.format(note.date, 'dd-MM-yyyy HH:mm:ss')}"></td>
+        <td th:text="${note.content}"></td>
+        <td>
+            <a th:href="@{/notes/edit/{id}(id=${note.id})}">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+        </td>
+        <td>
+            <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post"
+                  onsubmit="return confirm('Delete this note?');">
+                <button type="submit" style="border: none; background: none; cursor: pointer;">
+                    <i class="fa-solid fa-trash" style="color: red;"></i>
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<form action="/exit" method="post">
+    <button type="submit" style="margin-top: 20px; padding: 10px 20px; background-color: red; color: white; border: none; cursor: pointer;">
+        Exit
+    </button>
+</form>
+
+</body>
+</html>

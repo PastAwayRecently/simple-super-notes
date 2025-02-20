@@ -1,0 +1,47 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Fix the width of the last column and allow text wrapping */
+td:last-child {
+    max-width: 300px; /* Limit width */
+    word-wrap: break-word; /* Allow word wrapping */
+    white-space: pre-wrap; /* Preserve line breaks */
+}
+
+/* Style the input field for Name */
+input[type="text"] {
+    width: 20%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* Style the textarea for Note */
+textarea {
+    width:70%;  /* Full width */
+    aspect-ratio: 3 / 2;  /* Maintain a 3:2 proportion */
+    resize: vertical;  /* Allow only vertical resizing */
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none; /* Убирает подчеркивание у ссылок */
+}
+
+a i {
+    display: inline-block; /* Убеждаемся, что иконка не сдвигается */
+    vertical-align: middle; /* Выравниваем по центру */
+}
