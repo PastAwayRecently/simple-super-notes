@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.5</version> <!-- Обновленная версия Spring Boot -->
+        <relativePath/>
+    </parent>
+
     <groupId>org.example</groupId>
     <artifactId>simple-super-notes</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -18,25 +25,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>3.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>3.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.4.2</version>
         </dependency>
 
         <dependency>
@@ -56,25 +59,9 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.4.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal> <!--package JAR with dependencies-->
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Main-Class>org.example.notes.NoteApp</Main-Class>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -87,10 +74,8 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-
         </plugins>
 
         <finalName>simple-super-notes</finalName>
     </build>
-
 </project>
